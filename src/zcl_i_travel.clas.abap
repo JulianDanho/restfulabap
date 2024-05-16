@@ -1,0 +1,9 @@
+CLASS zcl_i_travel DEFINITION PUBLIC ABSTRACT FINAL FOR BEHAVIOR OF z_i_travel.
+protected section.
+private section.
+ENDCLASS.
+
+
+
+CLASS ZCL_I_TRAVEL IMPLEMENTATION.
+ENDCLASS.

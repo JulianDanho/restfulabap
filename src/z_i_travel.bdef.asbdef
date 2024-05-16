@@ -1,0 +1,31 @@
+managed implementation in class zcl_i_travel unique;
+strict;
+
+define behavior for Z_I_TRAVEL //alias <alias_name>
+persistent table /DMO/TRAVEL
+lock master
+authorization master ( instance )
+//etag master <field_name>
+{
+  create;
+  update;
+  delete;
+
+  mapping for /dmo/travel
+  {
+    TravelId = travel_id;
+    AgencyId = agency_id;
+    BeginDate = begin_date;
+    BookingFee = booking_fee;
+    Createdat = createdat;
+    Createdby = createdby;
+    CurrencyCode = currency_code;
+    CustomerId = customer_id;
+    Description = description;
+    EndDate = end_date;
+    Lastchangedat = lastchangedat;
+    Lastchangedby = lastchangedby;
+    Status = status;
+    TotalPrice = total_price;
+  }
+}
