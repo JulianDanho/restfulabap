@@ -1,0 +1,84 @@
+managed implementation in class zcl_i_travel unique;
+strict;
+with draft;
+
+define behavior for Z_I_TRAVEL //alias <alias_name>
+//persistent table /DMO/TRAVEL
+draft table zdmo_travel
+lock master
+total etag Lastchangedat
+authorization master ( instance )
+late numbering
+with unmanaged save
+//etag master <field_name>
+
+{
+  create;
+  update ( features : instance );
+  delete ( features : instance );
+
+  draft action Resume;
+  draft action Activate;
+  draft action Edit;
+  draft action Discard;
+  draft determine action Prepare
+  {
+    validation checkCurrency;
+  }
+
+
+  field ( readonly ) TravelId;
+
+  determination setDefaultBeginDate on modify { create; }
+
+  validation checkCurrency on save { field CurrencyCode; }
+
+  static action cancelTravel parameter Z_A_CANCEL_TRAVEL;
+
+  function countTravel result [1..*] $self;
+
+  association _booking {create; with draft; }
+
+  mapping for /dmo/travel
+  {
+    TravelId = travel_id;
+    AgencyId = agency_id;
+    BeginDate = begin_date;
+    BookingFee = booking_fee;
+    Createdat = createdat;
+    Createdby = createdby;
+    CurrencyCode = currency_code;
+    CustomerId = customer_id;
+    Description = description;
+    EndDate = end_date;
+    Lastchangedat = lastchangedat;
+    Lastchangedby = lastchangedby;
+    Status = status;
+    TotalPrice = total_price;
+  }
+}
+
+define behavior for Z_I_BOOKING alias Booking
+persistent table /dmo/booking
+draft table zdmo_booking_d
+lock dependent
+authorization dependent {
+  field (readonly) TravelId;
+  update;
+  delete;
+  association _travel { with draft; }
+
+  mapping for /DMO/BOOKING
+  {
+    TravelId = travel_id;
+    BookingId = booking_id;
+    BookingDate = booking_date;
+    CustomerId = customer_id;
+    CarrierId = carrier_id;
+    ConnectionId = connection_id;
+    FlightDate = flight_date;
+    FlightPrice = flight_price;
+    CurrencyCode = currency_code;
+  }
+
+}
