@@ -1,0 +1,4 @@
+@EndUserText.label: 'Service Definition: Travel Custom Entity'
+define service ZCE_TRAVEL_SD {
+  expose ZCE_TRAVEL_FLIGHT;
+}
