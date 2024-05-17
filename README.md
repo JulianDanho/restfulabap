@@ -4,12 +4,8 @@
 **ISBN:** 978-#-######-##-#  
 **Lektorat:** Bernhard Edlmann  
 **Coverdesign:** Philip Esch  
-**Coverfoto:** © carloscastilla | Nr. 1250534724 – istockphoto.com  
-**Satz & Layout:** Johann-Christian Hanke  
 
 **1. Auflage 2024**  
-© Espresso Tutorials GmbH, Gleichen 2024  
-URL: www.espresso-tutorials.de  
 
 ## Willkommen im GitHub-Repository zum Buch
 
